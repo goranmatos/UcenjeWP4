@@ -1,0 +1,9 @@
+create database  zavjezbu;
+
+use zavjezbu;
+
+create table samoproba(
+sifra int,
+naziv varchar(100),
+broj int,
+);
