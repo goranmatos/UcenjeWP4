@@ -6,4 +6,5 @@ create table samoproba(
 sifra int,
 naziv varchar(100),
 broj int,
+operativno varchar(10),
 );
