@@ -21,7 +21,7 @@ create table production(
 location int,
 consumption_24 int,
 solar_production_24 int,
-date datetime(),
+date datetime,
 );
 
 create table location(
