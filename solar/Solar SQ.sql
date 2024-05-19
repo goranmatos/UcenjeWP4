@@ -31,3 +31,8 @@ site_name varchar,
 instalation_type int,
 power_supply_type int,
 );
+
+
+alter table location add foreign key (instalation_type) references instalation_types(id);
+alter table location add foreign key (power_supply_type) references power_supply_types(id);
+alter table production add foreign key (location) references location(id);
