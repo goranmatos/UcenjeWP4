@@ -18,6 +18,7 @@ name varchar(100) not null,
 );
 
 create table production(
+id int not null primary key identity(1,1),
 location int,
 consumption_24 int,
 solar_production_24 int,
