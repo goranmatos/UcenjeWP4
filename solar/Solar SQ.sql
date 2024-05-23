@@ -38,4 +38,9 @@ alter table location add foreign key (instalation_type) references instalation_t
 alter table location add foreign key (power_supply_type) references power_supply_types(id);
 alter table production add foreign key (location) references location(id);
 
-insert
+insert into power_supply_types (name) values ('hybrid 24V');
+
+insert into grupe (naziv, smjer,maxpolaznika)
+values ('WP5',1,26);
+
+select * from power_supply_types;
