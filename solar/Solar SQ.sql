@@ -48,17 +48,11 @@ insert into power_supply_types values
 ('NetSure 5100 24kW with Solar subrack'),
 ('NetSure 5100 with Solar subrack');
 
-select * from power_supply_types;
-
 insert into instalation_types values 
 ('ADD50'),
 ('LIFE'),
 ('Redovna aktivnost');
 
-select * from instalation_types;
-
-select * from location;
-delete from location;
 insert into location (site_id, site_name, power_supply_type, instalation_type) values 
 ('0020', 'Vrapèe', 7, 1),
 ('0030', 'Šestine', 6, 2),
