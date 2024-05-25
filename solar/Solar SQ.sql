@@ -123,7 +123,7 @@ insert into location (site_id, site_name, power_supply_type, instalation_type) v
 ('1380', 'INA Lijevi Dubrovèak', 8, 2),
 ('1405', 'Sokolovac', 6, 2),
 ('1412', 'Hampovica', 8, 2),
-('1414', 'Ðelekovac', 6, 2),
+('1414', 'Delekovac', 6, 2),
 ('1421', 'Lončarica', 6, 2),
 ('1423', 'Grčevac', 6, 1),
 ('1427', 'Pavlovac', 8, 2),
