@@ -1,0 +1,15 @@
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\bin\Debug\net8.0\SamodanasCS.exe
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\bin\Debug\net8.0\SamodanasCS.deps.json
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\bin\Debug\net8.0\SamodanasCS.runtimeconfig.json
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\bin\Debug\net8.0\SamodanasCS.dll
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\bin\Debug\net8.0\SamodanasCS.pdb
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\obj\Debug\net8.0\SamodanasCS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\obj\Debug\net8.0\SamodanasCS.AssemblyInfoInputs.cache
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\obj\Debug\net8.0\SamodanasCS.AssemblyInfo.cs
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\obj\Debug\net8.0\SamodanasCS.csproj.CoreCompileInputs.cache
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\obj\Debug\net8.0\SamodanasCS.sourcelink.json
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\obj\Debug\net8.0\SamodanasCS.dll
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\obj\Debug\net8.0\refint\SamodanasCS.dll
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\obj\Debug\net8.0\SamodanasCS.pdb
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\obj\Debug\net8.0\SamodanasCS.genruntimeconfig.cache
+C:\Users\no056\Documents\GitHub\UcenjeWP4\samo proba\Samodanas\SamodanasCS\obj\Debug\net8.0\ref\SamodanasCS.dll
