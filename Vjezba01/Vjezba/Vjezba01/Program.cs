@@ -34,4 +34,6 @@ for (int i = 0; i < 10; i++)
     Console.WriteLine("\r");
 }
 
-Console.WriteLine( DateTime.Now- Vrijeme);
+Console.WriteLine("\r");
+Console.WriteLine("\r");
+Console.WriteLine(DateTime.Now - Vrijeme);
