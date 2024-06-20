@@ -9,6 +9,7 @@
 //int[,] niz = new int[Brojredova, Brojstupaca];
 //Console.WriteLine(niz[1,1]);
 
+var Vrijeme = DateTime.Now;
 
 int[,] niz = new int[10, 10];
 
@@ -32,3 +33,5 @@ for (int i = 0; i < 10; i++)
     }
     Console.WriteLine("\r");
 }
+
+Console.WriteLine( DateTime.Now- Vrijeme);
