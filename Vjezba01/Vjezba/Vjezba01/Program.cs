@@ -22,9 +22,9 @@ for (int i = 0; i < 10; i++)
         {
             Console.Write("  " + niz[j, i] + " ");
         }
-        else if ((niz[j, i] >= 10)&& (niz[j, i] < 100))
+        else if ((niz[j, i] >= 10) && (niz[j, i] < 100))
         {
-            Console.Write(" "+niz[j, i] + " ");
+            Console.Write(" " + niz[j, i] + " ");
         }
         else if (niz[j, i] == 100)
         {
