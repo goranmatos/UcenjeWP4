@@ -12,7 +12,7 @@ namespace UcenjeCS
                     Console.Write(poruka + ": ");
 
                     int a = int.Parse(Console.ReadLine());
-                    if (a <= 10) return a;
+                    if (a <= 10 && a >= 1) return a;
                 }
 
                 catch // i ne mora se staviti Exception

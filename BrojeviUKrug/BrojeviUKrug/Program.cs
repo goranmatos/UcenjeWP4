@@ -1,9 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Drawing;
 using UcenjeCS;
 
-int BrojRedova = Pomocno.UcitajCijeliBroj("Unesi broj redova, manji ili jednak 10");
-int BrojStupaca = Pomocno.UcitajCijeliBroj("Unesi broj stupaca, manji ili jednak 10");
+int BrojRedova = Pomocno.UcitajCijeliBroj("Unesi broj redova, veci ili jednak 1 i manji ili jednak 10");
+int BrojStupaca = Pomocno.UcitajCijeliBroj("Unesi broj stupaca, veci ili jednak 1 i manji ili jednak 10");
 
 Console.WriteLine(BrojRedova);
 Console.WriteLine(BrojStupaca);
@@ -66,14 +67,18 @@ for (; ; )
 }
 //ispisivanje niza niz
 
+Random r = new Random();
+
 for (i = 0; i < BrojRedova; i++)
 {
     Console.WriteLine("");
     Console.Write("***");
     for (j = 0; j < BrojStupaca; j++)
     {
+        Console.ForegroundColor = (ConsoleColor)r.Next(1, 16);
         Console.Write(niz[i, j].ToString().PadLeft(4));
     }
     Console.Write("   ***");
 }
 Console.WriteLine("");
+Console.ResetColor();
