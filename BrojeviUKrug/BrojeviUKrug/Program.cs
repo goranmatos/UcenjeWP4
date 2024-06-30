@@ -1,66 +1,88 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-int Brojredova;
-int Brojstupaca;
+using UcenjeCS;
 
-int IBrojredova = 0;
-int IBrojstupaca = 0;
+int BrojRedova = Pomocno.UcitajCijeliBroj("Unesi broj redova, manji ili jednak 10");
+int BrojStupaca = Pomocno.UcitajCijeliBroj("Unesi broj stupaca, manji ili jednak 10");
 
-while (true)
+Console.WriteLine(BrojRedova);
+Console.WriteLine(BrojStupaca);
+
+int UkupanBroj = BrojRedova * BrojStupaca;
+int[,] niz = new int[BrojRedova, BrojStupaca];
+
+int A0 = BrojStupaca - 1;
+int A1 = 0;
+int B0 = BrojRedova - 2;
+int B1 = 0;
+int RedniBroj = 1;
+int i;
+int j;
+
+//popunjavanje niza "niz"
+for (; ; )
 {
-    Console.WriteLine("Molim unesite broj redova: ");
-    try
+
+    for (j = A0; j >= A1; j--)
     {
-        Brojredova = int.Parse(Console.ReadLine());
-        if (Brojredova > 0 && Brojredova < 10)
+        i = B0 + 1;
+        niz[i, j] = RedniBroj;
+        RedniBroj = RedniBroj + 1;
+        if (RedniBroj == UkupanBroj + 1) { break; }
+    }
+    if (RedniBroj == UkupanBroj + 1) { break; }
+
+    for (i = B0; i >= B1; i--)
+    {
+        j = A1;
+        niz[i, j] = RedniBroj;
+        RedniBroj = RedniBroj + 1;
+        if (RedniBroj == UkupanBroj + 1) { break; }
+    }
+    if (RedniBroj == UkupanBroj + 1) { break; }
+
+    for (j = B1 + 1; j <= A0; j++)
+    {
+        i = B1;
+        niz[i, j] = RedniBroj;
+        RedniBroj = RedniBroj + 1;
+        if (RedniBroj == UkupanBroj + 1) { break; }
+    }
+    if (RedniBroj == UkupanBroj + 1) { break; }
+
+    for (i = A1 + 1; i <= B0; ++i)
+    {
+        j = A0;
+        niz[i, j] = RedniBroj;
+        RedniBroj = RedniBroj + 1;
+        if (RedniBroj == UkupanBroj + 1) { break; }
+    }
+    if (RedniBroj == UkupanBroj + 1) { break; }
+
+    A0 = A0 - 1;
+    A1 = A1 + 1;
+    B0 = B0 - 1;
+    B1 = B1 + 1;
+}
+//ispisivanje niza niz
+
+for (i = 0; i < BrojRedova; i++)
+{
+    Console.WriteLine("   ");
+    for (j = 0; j < BrojStupaca; j++)
+    {
+        if (niz[i, j] < 10)
         {
-            break;
+            Console.Write("   " + niz[i, j]);
         }
-        Console.WriteLine("Uneseni broj nije veći od 0 i manji od 10");
-    }
-    catch (Exception e)
-    {
-        Console.WriteLine("Niste unijeli cijeli pozitivni broj.");
-    }
-}
-
-while (true)
-{
-    Console.WriteLine("Molim unesite broj stupaca: ");
-    try
-    {
-        Brojstupaca = int.Parse(Console.ReadLine());
-        if (Brojstupaca > 0 && Brojstupaca < 10)
+        if (niz[i, j] >= 10 && niz[i, j] < 100)
         {
-            break;
+            Console.Write("  " + niz[i, j]);
         }
-        Console.WriteLine("Uneseni broj stupaca nije veći od 0 i manji od 10");
-    }
-    catch (Exception e)
-    {
-        Console.WriteLine("Niste unijeli cijeli pozitivni broj stupaca.");
+        if (niz[i, j] >= 100 && niz[i, j] < 1000)
+        {
+            Console.Write(" " + niz[i, j]);
+        }
     }
 }
-
-
-
-
-Console.WriteLine("********");
-Console.WriteLine("Brojstupaca = {0}, Brojredova = {1}", Brojstupaca, Brojredova);
-int[,] niz = new int[Brojstupaca, Brojredova];
-
-for (int i = 1; i <= Brojredova * Brojstupaca; i++)
-{
-    if (IBrojredova <= Brojredova - 1)
-    {
-        niz[IBrojstupaca, IBrojredova++] = i;
-        Console.WriteLine("niz {0},{1}={2}", IBrojstupaca, IBrojredova-1, niz[IBrojstupaca, IBrojredova-1]);
-    }
-    else 
-    { 
-    IBrojredova = 0;
-    IBrojstupaca++;
-    i--;
-    }
-    
-}
+Console.WriteLine("");
