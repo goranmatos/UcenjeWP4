@@ -68,21 +68,12 @@ for (; ; )
 
 for (i = 0; i < BrojRedova; i++)
 {
-    Console.WriteLine("   ");
+    Console.WriteLine("");
+    Console.Write("***");
     for (j = 0; j < BrojStupaca; j++)
     {
-        if (niz[i, j] < 10)
-        {
-            Console.Write("   " + niz[i, j]);
-        }
-        if (niz[i, j] >= 10 && niz[i, j] < 100)
-        {
-            Console.Write("  " + niz[i, j]);
-        }
-        if (niz[i, j] >= 100 && niz[i, j] < 1000)
-        {
-            Console.Write(" " + niz[i, j]);
-        }
+        Console.Write(niz[i, j].ToString().PadLeft(4));
     }
+    Console.Write("   ***");
 }
 Console.WriteLine("");
