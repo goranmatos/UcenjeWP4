@@ -9,6 +9,11 @@
 //int[,] niz = new int[Brojredova, Brojstupaca];
 //Console.WriteLine(niz[1,1]);
 
+
+using Vjezba01;
+
+CiklicnaMatrica.Izvedi();
+
 var Vrijeme = DateTime.Now;
 
 int[,] niz = new int[10, 10];
