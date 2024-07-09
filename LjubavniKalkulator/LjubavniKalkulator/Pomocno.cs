@@ -14,9 +14,9 @@ namespace LjubavniKalkulator
             String BrojeviOdImenaStringPrivremeni = "";
             int BrojeviOdImenaPrivremeniInt;
 
-            if (long.Parse(BrojeviOdImenaString) <= 100)
+            if (BrojeviOdImenaString.Length < 4)
             {
-                return BrojeviOdImenaString;
+                if (long.Parse(BrojeviOdImenaString) <= 100) return BrojeviOdImenaString;
             }
 
             int y = BrojeviOdImenaString.Length / 2;
