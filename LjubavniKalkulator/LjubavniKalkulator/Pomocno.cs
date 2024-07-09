@@ -12,19 +12,16 @@ namespace LjubavniKalkulator
         public static string PretvoriNizuPostotak(string BrojeviOdImenaString)
         {
             String BrojeviOdImenaStringPrivremeni = "";
-            int BrojeviOdImenaPrivremeniInt;
 
             if (BrojeviOdImenaString.Length < 4)
             {
                 if (long.Parse(BrojeviOdImenaString) <= 100) return BrojeviOdImenaString;
             }
-
             int y = BrojeviOdImenaString.Length / 2;
             if (BrojeviOdImenaString.Length % 2 == 0)
             {
                 y = y - 1;
             }
-
             for (int i = 0; y >= i; i++)
             {
                 //punjene novog zbrojenog broja
