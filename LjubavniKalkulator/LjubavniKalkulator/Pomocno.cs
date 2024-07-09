@@ -4,11 +4,11 @@ namespace LjubavniKalkulator
 {
     internal class Pomocno
     {
-        public static int BrojSlovaUImenu(string Ime, char Slovo)
+        public static string BrojSlovaUImenu(string Ime, char Slovo)
         {
-            return Ime.Split(Slovo).Length - 1;
+            int a = Ime.Split(Slovo).Length - 1;
+            return a.ToString();
         }
-
         public static string PretvoriNizuPostotak(string BrojeviOdImenaString)
         {
             String BrojeviOdImenaStringPrivremeni = "";
@@ -30,8 +30,10 @@ namespace LjubavniKalkulator
                 //punjene novog zbrojenog broja
                 if (BrojeviOdImenaString.Length != 1)
                 {
-                    BrojeviOdImenaPrivremeniInt = int.Parse(BrojeviOdImenaString.Substring(0, 1)) + (int.Parse(BrojeviOdImenaString.Substring(BrojeviOdImenaString.Length - 1, 1)));
-                    BrojeviOdImenaStringPrivremeni = BrojeviOdImenaStringPrivremeni + BrojeviOdImenaPrivremeniInt.ToString();
+                    BrojeviOdImenaStringPrivremeni = BrojeviOdImenaStringPrivremeni +
+                    (int.Parse(BrojeviOdImenaString.Substring(0, 1)) +
+                    (int.Parse(BrojeviOdImenaString.Substring(BrojeviOdImenaString.Length - 1, 1)))).ToString();
+
                     BrojeviOdImenaString = (BrojeviOdImenaString.Remove(0, 1)).Remove((BrojeviOdImenaString.Remove(0, 1)).Length - 1, 1);
                 }
                 else
