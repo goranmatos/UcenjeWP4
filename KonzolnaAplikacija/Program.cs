@@ -1,0 +1,1 @@
+﻿new UcenjeWP4.KonzolnaAplikacija.Izbornik();

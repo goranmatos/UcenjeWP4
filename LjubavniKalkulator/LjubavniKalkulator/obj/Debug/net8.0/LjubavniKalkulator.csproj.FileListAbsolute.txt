@@ -1,0 +1,15 @@
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\bin\Debug\net8.0\LjubavniKalkulator.exe
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\bin\Debug\net8.0\LjubavniKalkulator.deps.json
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\bin\Debug\net8.0\LjubavniKalkulator.runtimeconfig.json
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\bin\Debug\net8.0\LjubavniKalkulator.dll
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\bin\Debug\net8.0\LjubavniKalkulator.pdb
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\obj\Debug\net8.0\LjubavniKalkulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\obj\Debug\net8.0\LjubavniKalkulator.AssemblyInfoInputs.cache
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\obj\Debug\net8.0\LjubavniKalkulator.AssemblyInfo.cs
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\obj\Debug\net8.0\LjubavniKalkulator.csproj.CoreCompileInputs.cache
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\obj\Debug\net8.0\LjubavniKalkulator.sourcelink.json
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\obj\Debug\net8.0\LjubavniKalkulator.dll
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\obj\Debug\net8.0\refint\LjubavniKalkulator.dll
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\obj\Debug\net8.0\LjubavniKalkulator.pdb
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\obj\Debug\net8.0\LjubavniKalkulator.genruntimeconfig.cache
+C:\Users\no056\Documents\GitHub\UcenjeWP4\LjubavniKalkulator\LjubavniKalkulator\obj\Debug\net8.0\ref\LjubavniKalkulator.dll
