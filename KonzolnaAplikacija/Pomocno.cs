@@ -10,7 +10,11 @@
             Console.Write(poruka + ": ");
             return Console.ReadLine().Trim().ToLower() == trueValue;
         }
-
+        internal static bool UcitajBool(bool? stara, string poruka, string trueValue)
+        {
+            Console.Write(poruka + " (" + stara + "): ");
+            return Console.ReadLine().Trim().ToLower() == trueValue;
+        }
         internal static DateTime UcitajDatum(string poruka, bool kontrolaPrijeDanasnjegDatuma)
         {
             DateTime d;
@@ -39,7 +43,34 @@
                 }
             }
         }
+        internal static DateTime UcitajDatum(DateTime? stara, string poruka, bool kontrolaPrijeDanasnjegDatuma)
+        {
+            DateTime d;
 
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Format unosa je yyyy-MM-dd, za današnji datum {0}",
+                        DateTime.Now.ToString("yyyy-MM-dd"));
+                    if (kontrolaPrijeDanasnjegDatuma)
+                    {
+                        Console.WriteLine("Uneseni datum ne smije biti prije današnjeg datuma!");
+                    }
+                    Console.Write(poruka + " (" + stara + "): ");
+                    d = DateTime.Parse(Console.ReadLine());
+                    if (kontrolaPrijeDanasnjegDatuma && d < DateTime.Now)
+                    {
+                        throw new Exception();
+                    }
+                    return d;
+                }
+                catch
+                {
+                    Console.WriteLine("Unos datuma nije dobar");
+                }
+            }
+        }
         internal static float UcitajDecimalniBroj(string poruka, int min, float max)
         {
             float b;
@@ -61,7 +92,27 @@
                 }
             }
         }
-
+        internal static float UcitajDecimalniBroj(float? stara, string poruka, int min, float max)
+        {
+            float b;
+            while (true)
+            {
+                try
+                {
+                    Console.Write(poruka + " (" + stara + "): ");
+                    b = float.Parse(Console.ReadLine());
+                    if (b < min || b > max)
+                    {
+                        throw new Exception();
+                    }
+                    return b;
+                }
+                catch
+                {
+                    Console.WriteLine("Decimalni broj mora biti u rasponu {0} i {1}", min, max);
+                }
+            }
+        }
         internal static int UcitajRasponBroja(string poruka, int min, int max)
         {
             int b;
@@ -83,7 +134,27 @@
                 }
             }
         }
-
+        internal static int UcitajRasponBroja(int? stara, string poruka, int min, int max)
+        {
+            int b;
+            while (true)
+            {
+                try
+                {                  
+                    Console.Write(poruka + " (" + stara + "): ");
+                    b = int.Parse(Console.ReadLine());
+                    if (b < min || b > max)
+                    {
+                        throw new Exception();
+                    }
+                    return b;
+                }
+                catch
+                {
+                    Console.WriteLine("Unos nije dobar, unos mora biti u rasponu {0} do {1}", min, max);
+                }
+            }
+        }
         internal static string UcitajString(string poruka, int max, bool obavezno)
         {
             string s;

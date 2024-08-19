@@ -38,13 +38,14 @@ namespace UcenjeWP4.KonzolnaAplikacija
             Console.WriteLine("2. Unos novog polaznika");
             Console.WriteLine("3. Promjena podataka postojećeg polaznika");
             Console.WriteLine("4. Brisanje polaznika");
-            Console.WriteLine("5. Povratak na glavni izbornik");
+            Console.WriteLine("5. Statistika polaznika");
+            Console.WriteLine("6. Povratak na glavni izbornik");
             OdabirOpcijeIzbornika();
         }
 
         private void OdabirOpcijeIzbornika()
         {
-           switch(Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 5))
+           switch(Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 6))
             {
                 case 1:
                     Console.Clear();
@@ -63,10 +64,24 @@ namespace UcenjeWP4.KonzolnaAplikacija
                     ObrisiPolaznika();
                     PrikaziIzbornik();
                     break;
-                case 5:                    
+                case 5:
+                    PrikaziStatistikuPolaznika();
+                    PrikaziIzbornik();
+                    break;
+                case 6:                    
                     Console.Clear();
                     break;
             }
+        }
+
+        private void PrikaziStatistikuPolaznika()
+        {
+            int ukupnoPolaznika = Polaznici.Count();
+           
+            Console.Clear();
+            Console.WriteLine("-> STATISTIKA POLAZNIKA");
+            Console.WriteLine("Ukupno polaznika: " + ukupnoPolaznika);
+            Console.WriteLine("");
         }
 
         private void ObrisiPolaznika()
@@ -89,7 +104,7 @@ namespace UcenjeWP4.KonzolnaAplikacija
                 Pomocno.UcitajRasponBroja("Odaberi redni broj polaznika za promjenu",
                 1,Polaznici.Count)-1
                 ];
-            odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesi šifru polaznika", 1, int.MaxValue);
+            odabrani.Sifra = Pomocno.UcitajRasponBroja(odabrani.Sifra,"Unesi šifru polaznika", 1, int.MaxValue);
             odabrani.Ime = Pomocno.UcitajString(odabrani.Ime,"Unesi ime polaznika", 50, true);
             odabrani.Prezime = Pomocno.UcitajString(odabrani.Prezime,"Unesi prezime polaznika", 50, true);
             odabrani.Email = Pomocno.UcitajString(odabrani.Email,"Unesi email polaznika", 50, true);

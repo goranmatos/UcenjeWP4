@@ -5,15 +5,15 @@ namespace UcenjeWP4.KonzolnaAplikacija
     internal class ObradaGrupa
     {
 
-        public List<Grupa>  Grupe { get; set; }
+        public List<Grupa> Grupe { get; set; }
         private Izbornik Izbornik;
 
-        public ObradaGrupa() 
+        public ObradaGrupa()
         {
             Grupe = new List<Grupa>();
 
         }
-        public ObradaGrupa(Izbornik izbornik):this()
+        public ObradaGrupa(Izbornik izbornik) : this()
         {
             this.Izbornik = izbornik;
         }
@@ -25,13 +25,15 @@ namespace UcenjeWP4.KonzolnaAplikacija
             Console.WriteLine("2. Unos nove grupe");
             Console.WriteLine("3. Promjena podataka postojeće grupe");
             Console.WriteLine("4. Brisanje grupe");
-            Console.WriteLine("5. Povratak na glavni izbornik");
+            Console.WriteLine("5. Brisanje polaznika iz grupe");
+            Console.WriteLine("6. Statistika grupe");
+            Console.WriteLine("7. Povratak na glavni izbornik");
             OdabirOpcijeIzbornika();
         }
 
         private void OdabirOpcijeIzbornika()
         {
-           switch(Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 5))
+            switch (Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 7))
             {
                 case 1:
                     Console.Clear();
@@ -50,9 +52,48 @@ namespace UcenjeWP4.KonzolnaAplikacija
                     ObrisiGrupu();
                     PrikaziIzbornik();
                     break;
-                case 5:                    
+                case 5:
+                    ObrisiPolaznikaIzGrupe();
+                    PrikaziIzbornik();
+                    break;
+                case 6:
+                    PrikaziStatistikuGrupe();
+                    PrikaziIzbornik();
+                    break;
+                case 7:
                     Console.Clear();
                     break;
+            }
+        }
+
+        private void ObrisiPolaznikaIzGrupe()
+        {
+            PrikaziGrupe();
+
+
+            // PrikaziPolaznike();
+            var odabranaGrupa = Grupe[
+                Pomocno.UcitajRasponBroja("Odaberi redni broj grupe iz kojeg želite obrisati polaznika",
+                1, Grupe.Count) - 1
+                ];
+
+            var odabraniPolaznikIzGrupe = odabranaGrupa.Polaznici[
+                    Pomocno.UcitajRasponBroja("Odaberi redni broj polaznika kojeg želite obirsati iz grupe " + odabranaGrupa.Naziv,
+                    1, odabranaGrupa.Polaznici.Count) - 1
+                    ];
+            Console.WriteLine("Odabrana grupa je:" + odabraniPolaznikIzGrupe.Ime + " " + odabraniPolaznikIzGrupe.Prezime);
+            if (Pomocno.UcitajBool("Sigurno želite obrisati polaznika " + odabraniPolaznikIzGrupe.Ime + " " + odabraniPolaznikIzGrupe.Prezime + " iz grupe " + odabranaGrupa.Naziv + "? (DA/NE)", "da"))
+            {
+                var indexGrupe = -1;
+                var indexPolaznika = -1;
+
+                indexGrupe = Grupe.IndexOf(odabranaGrupa);
+                indexPolaznika = odabranaGrupa.Polaznici.IndexOf(odabraniPolaznikIzGrupe);
+
+                //Grupe[0].Polaznici.RemoveAt(1); brisanje polaznika iz grupe putem indexa
+                Grupe[indexGrupe].Polaznici.RemoveAt(indexPolaznika); //brisanje polaznika iz grupe putem indexa
+                                                                      //Grupe[Grupe.IndexOf(odabranaGrupa)].Polaznici.RemoveAt(Grupe[Grupe.IndexOf(odabranaGrupa)].Polaznici.IndexOf(odabraniPolaznikIzGrupe));
+
             }
         }
 
@@ -72,23 +113,22 @@ namespace UcenjeWP4.KonzolnaAplikacija
         {
             PrikaziGrupe();
             var g = Grupe[
-                Pomocno.UcitajRasponBroja("Odaberi redni broj grupe za promjenu",1,Grupe.Count)-1
+                Pomocno.UcitajRasponBroja("Odaberi redni broj grupe za promjenu", 1, Grupe.Count) - 1
                 ];
             // copy paste s linije 102 - izvući u metodu
-            g.Sifra = Pomocno.UcitajRasponBroja("Unesi šifru grupe", 1, int.MaxValue);
-            g.Naziv = Pomocno.UcitajString("Unesi naziv grupe", 50, true);
+            g.Sifra = Pomocno.UcitajRasponBroja(g.Sifra, "Unesi šifru grupe", 1, int.MaxValue);
+            g.Naziv = Pomocno.UcitajString(g.Naziv, "Unesi naziv grupe", 50, true);
             //smjer
             Izbornik.ObradaSmjer.PrikaziSmjerove();
 
             g.Smjer = Izbornik.ObradaSmjer.Smjerovi[
                 Pomocno.UcitajRasponBroja("Odaberi redni broj smjera", 1, Izbornik.ObradaSmjer.Smjerovi.Count) - 1];
 
-            g.Predavac = Pomocno.UcitajString("Unesi ime i prezime predavača", 50, true);
-            g.MaksimalnoPolaznika = Pomocno.UcitajRasponBroja("Unesi maksimalno polaznika", 1, 30);
+            g.Predavac = Pomocno.UcitajString(g.Predavac, "Unesi ime i prezime predavača", 50, true);
+            g.MaksimalnoPolaznika = Pomocno.UcitajRasponBroja(g.MaksimalnoPolaznika, "Unesi maksimalno polaznika", 1, 30);
 
             // polaznici
             g.Polaznici = UcitajPolaznike();
-
 
         }
 
@@ -97,12 +137,18 @@ namespace UcenjeWP4.KonzolnaAplikacija
             Console.WriteLine("*****************************");
             Console.WriteLine("Grupe u aplikaciji");
             int rb = 0, rbp;
-            foreach(var g in Grupe)
+
+            if (Grupe.Count == 0)
             {
-                Console.WriteLine(++rb + ". "+ g.Naziv + " (" + g.Smjer?.Naziv + "), " + g.Polaznici?.Count + " polaznika"); // prepisati metodu toString
+                Console.WriteLine("***Nema definiranih grupa***");
+            }
+            foreach (var g in Grupe)
+            {
+
+                Console.WriteLine(++rb + ". " + g.Naziv + " (" + g.Smjer?.Naziv + "), " + g.Polaznici?.Count + " polaznika"); // prepisati metodu toString
                 rbp = 0;
                 g.Polaznici.Sort();
-                foreach (var p in g.Polaznici) 
+                foreach (var p in g.Polaznici)
                 {
                     Console.WriteLine("\t" + ++rbp + ". " + p.Ime + " " + p.Prezime);
                 }
@@ -122,32 +168,61 @@ namespace UcenjeWP4.KonzolnaAplikacija
             Izbornik.ObradaSmjer.PrikaziSmjerove();
 
             g.Smjer = Izbornik.ObradaSmjer.Smjerovi[
-                Pomocno.UcitajRasponBroja("Odaberi redni broj smjera",1, Izbornik.ObradaSmjer.Smjerovi.Count) - 1];
-            
+                Pomocno.UcitajRasponBroja("Odaberi redni broj smjera", 1, Izbornik.ObradaSmjer.Smjerovi.Count) - 1];
+
             g.Predavac = Pomocno.UcitajString("Unesi ime i prezime predavača", 50, true);
             g.MaksimalnoPolaznika = Pomocno.UcitajRasponBroja("Unesi maksimalno polaznika", 1, 30);
 
             // polaznici
             g.Polaznici = UcitajPolaznike();
-
             Grupe.Add(g);
         }
 
         private List<Polaznik> UcitajPolaznike()
         {
             List<Polaznik> lista = new List<Polaznik>();
-            while(Pomocno.UcitajBool("Za unos polaznika unesi DA", "da"))
+            while (Pomocno.UcitajBool("Za unos polaznika unesi DA", "da"))
             {
                 Izbornik.ObradaPolaznik.PrikaziPolaznike();
                 lista.Add(
                     Izbornik.ObradaPolaznik.Polaznici[
-                        Pomocno.UcitajRasponBroja("Odaberi redni broj polaznika",1,
-                        Izbornik.ObradaPolaznik.Polaznici.Count)-1
+                        Pomocno.UcitajRasponBroja("Odaberi redni broj polaznika", 1,
+                        Izbornik.ObradaPolaznik.Polaznici.Count) - 1
                         ]
                     );
             }
 
             return lista;
+        }
+        private void PrikaziStatistikuGrupe()
+        {
+            if (Grupe == null || !Grupe.Any())
+            {
+                Console.WriteLine("\nNema podataka za prikaz!");
+                PrikaziIzbornik();
+                return;
+            }
+
+            int ukupnoPolaznika = Grupe.Sum(g => g.Polaznici?.Count ?? 0);
+            float prosjecanBrojPolaznika = Grupe.Any() ? (float)Grupe.Average(g => g.Polaznici?.Count ?? 0) : 0;
+            float ukupniPrihod = Grupe.Sum(g => (g.Polaznici?.Count ?? 0) * (g.Smjer?.Cijena ?? 0));
+            float prosjecanPrihodPoPolazniku = ukupniPrihod / ukupnoPolaznika;
+            var datumi = Grupe.Where(g => g.Smjer?.IzvodiSeOd.HasValue ?? false).Select(g => g.Smjer.IzvodiSeOd.Value).ToList();
+
+            DateTime najranijiDatum = datumi.Any() ? datumi.Min() : DateTime.MinValue;
+            DateTime najkasnijiDatum = datumi.Any() ? datumi.Max() : DateTime.MaxValue;
+            TimeSpan razlikaDatuma = najkasnijiDatum - najranijiDatum;
+
+            Console.Clear();
+            Console.WriteLine("-> STATISTIKA GRUPA");
+            Console.WriteLine("Ukupno broj grupa: " + Grupe.Count);
+            Console.WriteLine("Ukupno polaznika u svim grupama: " + ukupnoPolaznika);
+            Console.WriteLine("Prosječan broj polaznika: " + prosjecanBrojPolaznika);
+            Console.WriteLine("Ukupan iznos prihoda po smjerovima: " + ukupniPrihod);
+            Console.WriteLine("Prosječan iznos prihoda po polazniku: " + prosjecanPrihodPoPolazniku);
+            Console.WriteLine("Razlika između najranijeg i najkasnijeg datuma: " + razlikaDatuma.Days + " dana");
+            Console.WriteLine("");
+
         }
     }
 }

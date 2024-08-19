@@ -10,10 +10,10 @@ namespace UcenjeWP4.KonzolnaAplikacija
     {
 
         public ObradaSmjer ObradaSmjer { get; set; }  // da ne mora raditi instancu u konstruktoru
-        public ObradaPolaznik ObradaPolaznik { get; set; } 
-        public ObradaGrupa ObradaGrupa { get; set; } 
+        public ObradaPolaznik ObradaPolaznik { get; set; }
+        public ObradaGrupa ObradaGrupa { get; set; }
 
-        public Izbornik() 
+        public Izbornik()
         {
             Pomocno.DEV = false;
             ObradaSmjer = new ObradaSmjer();
@@ -28,10 +28,23 @@ namespace UcenjeWP4.KonzolnaAplikacija
             string docPath =
          Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-            if(File.Exists(Path.Combine(docPath, "smjerovi.json")))
+            if (File.Exists(Path.Combine(docPath, "smjerovi.json")))
             {
                 StreamReader file = File.OpenText(Path.Combine(docPath, "smjerovi.json"));
                 ObradaSmjer.Smjerovi = JsonConvert.DeserializeObject<List<Smjer>>(file.ReadToEnd());
+                file.Close();
+            }
+            if (File.Exists(Path.Combine(docPath, "polaznici.json")))
+            {
+                StreamReader file = File.OpenText(Path.Combine(docPath, "polaznici.json"));
+                ObradaPolaznik.Polaznici = JsonConvert.DeserializeObject<List<Polaznik>>(file.ReadToEnd());
+                file.Close();
+            }
+            if (File.Exists(Path.Combine(docPath, "grupe.json")))
+            {
+                StreamReader file = File.OpenText(Path.Combine(docPath, "grupe.json"));
+                ObradaGrupa.Grupe = JsonConvert.DeserializeObject<List<Grupa>>(file.ReadToEnd());
+                file.Close();
             }
         }
 
@@ -48,8 +61,8 @@ namespace UcenjeWP4.KonzolnaAplikacija
 
         private void OdabirOpcijeIzbornika()
         {
-            
-            switch(Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 4))
+
+            switch (Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 5))
             {
                 case 1:
                     Console.Clear();
@@ -75,19 +88,23 @@ namespace UcenjeWP4.KonzolnaAplikacija
 
         private void SpremiPodatke()
         {
+            string docPath =
+         Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (Pomocno.DEV)
             {
                 return;
             }
+            StreamWriter outputFileSmjerovi = new StreamWriter(Path.Combine(docPath, "smjerovi.json"));
+            outputFileSmjerovi.WriteLine(JsonConvert.SerializeObject(ObradaSmjer.Smjerovi));
+            outputFileSmjerovi.Close();
 
-            //Console.WriteLine(JsonConvert.SerializeObject(ObradaSmjer.Smjerovi));
+            StreamWriter outputFilPolaznici = new StreamWriter(Path.Combine(docPath, "polaznici.json"));
+            outputFilPolaznici.WriteLine(JsonConvert.SerializeObject(ObradaPolaznik.Polaznici));
+            outputFilPolaznici.Close();
 
-            string docPath =
-          Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "smjerovi.json"));
-            outputFile.WriteLine(JsonConvert.SerializeObject(ObradaSmjer.Smjerovi));
-            outputFile.Close();
+            StreamWriter outputFilGrupe = new StreamWriter(Path.Combine(docPath, "grupe.json"));
+            outputFilGrupe.WriteLine(JsonConvert.SerializeObject(ObradaGrupa.Grupe));
+            outputFilGrupe.Close();
         }
 
         private void PozdravnaPoruka()

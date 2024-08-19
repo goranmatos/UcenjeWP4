@@ -30,13 +30,14 @@ namespace UcenjeWP4.KonzolnaAplikacija
             Console.WriteLine("2. Unos novog smjera");
             Console.WriteLine("3. Promjena podataka postojećeg smjera");
             Console.WriteLine("4. Brisanje smjera");
-            Console.WriteLine("5. Povratak na glavni izbornik");
+            Console.WriteLine("5. Statistika smjera");
+            Console.WriteLine("6. Povratak na glavni izbornik");
             OdabirOpcijeIzbornika();
         }
 
         private void OdabirOpcijeIzbornika()
         {
-           switch(Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 5))
+           switch(Pomocno.UcitajRasponBroja("Odaberite stavku izbornika", 1, 6))
             {
                 case 1:
                     Console.Clear();
@@ -55,10 +56,24 @@ namespace UcenjeWP4.KonzolnaAplikacija
                     ObrisiPostojeciSmjer();
                     PrikaziIzbornik();
                     break;
-                case 5:                    
+                case 5:
+                    PrikaziStatistikuSmjer();
+                    PrikaziIzbornik();
+                    break;
+                case 6:                    
                     Console.Clear();
                     break;
             }
+        }
+
+        private void PrikaziStatistikuSmjer()
+        {
+            int ukupnoSmerova = Smjerovi.Count();
+
+            Console.Clear();
+            Console.WriteLine("-> STATISTIKA Smjerova");
+            Console.WriteLine("Ukupno smjerova: " + ukupnoSmerova);
+            Console.WriteLine("");
         }
 
         private void ObrisiPostojeciSmjer()
@@ -79,17 +94,17 @@ namespace UcenjeWP4.KonzolnaAplikacija
             PrikaziSmjerove();
             var odabrani = Smjerovi[Pomocno.UcitajRasponBroja("Odaberi redni broj smjera za promjenu",
                 1, Smjerovi.Count) - 1];
-            odabrani.Sifra = Pomocno.UcitajRasponBroja("Unesi šifru smjera", 1, int.MaxValue);
-            odabrani.Naziv = Pomocno.UcitajString("Unesi naziv smjera", 50, true);
-            odabrani.Trajanje = Pomocno.UcitajRasponBroja("Unesi trajanje smjera", 1, 500);
-            odabrani.Cijena = Pomocno.UcitajDecimalniBroj("Unesi cijenu smjera", 0, 10000);
-            odabrani.IzvodiSeOd = Pomocno.UcitajDatum("Unesi datum od kada se izvodi smjer", true);
-            odabrani.Verificiran = Pomocno.UcitajBool("Da li je smjer verificiran (DA/NE)", "da");
+            odabrani.Sifra = Pomocno.UcitajRasponBroja(odabrani.Sifra,"Unesi šifru smjera", 1, int.MaxValue);
+            odabrani.Naziv = Pomocno.UcitajString(odabrani.Naziv,"Unesi naziv smjera", 50, true);
+            odabrani.Trajanje = Pomocno.UcitajRasponBroja(odabrani.Trajanje,"Unesi trajanje smjera", 1, 500);
+            odabrani.Cijena = Pomocno.UcitajDecimalniBroj(odabrani.Cijena,"Unesi cijenu smjera", 0, 10000);
+            odabrani.IzvodiSeOd = Pomocno.UcitajDatum(odabrani.IzvodiSeOd,"Unesi datum od kada se izvodi smjer", true);
+            odabrani.Verificiran = Pomocno.UcitajBool(odabrani.Verificiran,"Da li je smjer verificiran (DA/NE)", "da");
 
             // gornjih 6 linija igra istu ulogu kao na 93 - 98. Izvući u metodu
 
         }
-
+        
         public void PrikaziSmjerove()
         {
             Console.WriteLine("*****************************");
