@@ -108,15 +108,23 @@ namespace UcenjeWP4.KonzolnaAplikacija
                 Grupe.Remove(g);
             }
         }
-
         private void PromjeniPodatkeGrupe()
         {
             PrikaziGrupe();
             var g = Grupe[
                 Pomocno.UcitajRasponBroja("Odaberi redni broj grupe za promjenu", 1, Grupe.Count) - 1
                 ];
-            // copy paste s linije 102 - izvući u metodu
-            g.Sifra = Pomocno.UcitajRasponBroja(g.Sifra, "Unesi šifru grupe", 1, int.MaxValue);
+            var originalSifra = g.Sifra;
+
+            int sifra = Pomocno.UcitajRasponBroja("\tPromjeni šifru grupe (" + originalSifra + ")", 1, int.MaxValue);
+            while (sifra != originalSifra && Grupe.Exists(p => p.Sifra == sifra))
+            {               
+                Console.WriteLine("\tTa šifra već postoji za neku grupu!");
+                sifra = Pomocno.UcitajRasponBroja("\tPromjeni šifru grupe (" + originalSifra + ")", 1, int.MaxValue);
+            }
+            g.Sifra = sifra;
+
+
             g.Naziv = Pomocno.UcitajString(g.Naziv, "Unesi naziv grupe", 50, true);
             //smjer
             Izbornik.ObradaSmjer.PrikaziSmjerove();
@@ -155,7 +163,6 @@ namespace UcenjeWP4.KonzolnaAplikacija
             }
             Console.WriteLine("****************************");
         }
-
         private void UnosNoveGrupe()
         {
             Console.WriteLine("***************************");
@@ -177,7 +184,6 @@ namespace UcenjeWP4.KonzolnaAplikacija
             g.Polaznici = UcitajPolaznike();
             Grupe.Add(g);
         }
-
         private List<Polaznik> UcitajPolaznike()
         {
             List<Polaznik> lista = new List<Polaznik>();

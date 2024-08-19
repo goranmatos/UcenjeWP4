@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KonzolnaAplikacija")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d81fbe5555ad9c431ada94f1bd82ee11f253584")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ffc640f4a11cbf37b9802dcc15e65bd65f2e8be4")]
 [assembly: System.Reflection.AssemblyProductAttribute("KonzolnaAplikacija")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KonzolnaAplikacija")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
