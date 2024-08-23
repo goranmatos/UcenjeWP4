@@ -183,6 +183,7 @@ namespace UcenjeWP4.KonzolnaAplikacija
             // polaznici
             g.Polaznici = UcitajPolaznike();
             Grupe.Add(g);
+            
         }
         private List<Polaznik> UcitajPolaznike()
         {

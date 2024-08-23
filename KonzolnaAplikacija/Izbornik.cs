@@ -40,12 +40,13 @@ namespace UcenjeWP4.KonzolnaAplikacija
                 ObradaPolaznik.Polaznici = JsonConvert.DeserializeObject<List<Polaznik>>(file.ReadToEnd());
                 file.Close();
             }
-            if (File.Exists(Path.Combine(docPath, "grupe.json")))
-            {
-                StreamReader file = File.OpenText(Path.Combine(docPath, "grupe.json"));
-                ObradaGrupa.Grupe = JsonConvert.DeserializeObject<List<Grupa>>(file.ReadToEnd());
-                file.Close();
-            }
+//            if (File.Exists(Path.Combine(docPath, "grupe.json")))
+//            {
+//                StreamReader file = File.OpenText(Path.Combine(docPath, "grupe.json"));
+//                ObradaGrupa.Grupe = JsonConvert.DeserializeObject<List<Grupa>>(file.ReadToEnd());
+//                file.Close();
+//
+//           }
         }
 
         private void PrikaziIzbornik()
