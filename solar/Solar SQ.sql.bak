@@ -265,6 +265,6 @@ insert into location (site_id, site_name, power_supply_type, instalation_type) v
 ('4593', 'Dugi Otok zapad', 8, 1);
 
 insert into production values 
-(1, 200, 100, 2025-05-01),
-(1, 200, 100, 2025-05-02),
-(1, 200, 100, 2025-05-03);
+(1, 200, 100, '2025-05-01'),
+(1, 200, 100, '2025-05-02'),
+(1, 200, 100, '2025-05-03');
